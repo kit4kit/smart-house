@@ -15,9 +15,7 @@ public class Conditioner {
         this.name = name;
     }
 
-    public int getMaxTemperature() {
-        return maxTemperature;
-    }
+    public int getMaxTemperature() { return maxTemperature; }
 
     public void setMaxTemperature(int maxTemperature) {
         this.maxTemperature = maxTemperature;
