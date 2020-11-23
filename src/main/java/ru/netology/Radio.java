@@ -55,28 +55,31 @@ public class Radio {
     public void setMinVolume(int minVolume) {
         this.minVolume = minVolume;
     }
-    public void nextCurrentRadio(int currentRadio){
+
+
+    public void nextCurrentRadio(){
         if (currentRadio == 9){
             this.currentRadio = 0;
             return;
         }
         this.currentRadio = currentRadio + 1;
     }
-    public void prevCurrentRadio(int currentRadio){
+
+    public void prevCurrentRadio(){
         if(currentRadio == 0){
             this.currentRadio = 9;
             return;
         }
         this.currentRadio = currentRadio - 1;
     }
-    public void increaseCurrentVolume(int currentVolume){
+    public void increaseCurrentVolume(){
         if(currentVolume == 10){
             this.currentVolume = currentVolume;
             return;
         }
         this.currentVolume = currentVolume + 1;
     }
-    public  void decreaseCurrentVolume(int currentVolume){
+    public  void decreaseCurrentVolume(){
         if(currentVolume == 0){
             this.currentVolume = currentVolume;
             return;

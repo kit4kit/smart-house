@@ -17,7 +17,8 @@ class RadioTest {
     )
     void nextCurrentRadio(String test, int currentRadio, int expected) {
         Radio radio = new Radio();
-        radio.nextCurrentRadio(currentRadio);
+        radio.setCurrentRadio(currentRadio);
+        radio.nextCurrentRadio();
         assertEquals(expected, radio.getCurrentRadio());
     }
     @ParameterizedTest
@@ -29,7 +30,8 @@ class RadioTest {
     )
     void shouldPrevCurrentRadio(String test, int currentRadio, int expected) {
         Radio radio = new Radio();
-        radio.prevCurrentRadio(currentRadio);
+        radio.setCurrentRadio(currentRadio);
+        radio.prevCurrentRadio();
         assertEquals(expected, radio.getCurrentRadio());
     }
 
@@ -40,9 +42,11 @@ class RadioTest {
                     "'expected, currentRadio', 8, 9"
             }
     )
+
     void increaseCurrentVolume(String test, int currentVolume, int expected) {
         Radio radio = new Radio();
-        radio.increaseCurrentVolume(currentVolume);
+        radio.setCurrentVolume(currentVolume);
+        radio.increaseCurrentVolume();
         assertEquals(expected, radio.getCurrentVolume());
     }
 
@@ -55,7 +59,8 @@ class RadioTest {
     )
     void decreaseCurrentVolume(String test, int currentVolume, int expected) {
         Radio radio = new Radio();
-        radio.decreaseCurrentVolume(currentVolume);
+        radio.setCurrentVolume(currentVolume);
+        radio.decreaseCurrentVolume();
         assertEquals(expected, radio.getCurrentVolume());
     }
 }
