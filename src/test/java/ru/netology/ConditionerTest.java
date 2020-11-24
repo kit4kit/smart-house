@@ -27,20 +27,22 @@ class ConditionerTest {
     public void shouldIncreaseCurrentTemperature(String test, int maxTemperature, int currentTemperature, int expected){
         Conditioner conditioner = new Conditioner();
         conditioner.setMaxTemperature(maxTemperature);
-        conditioner.increaseCurrentTemperature(currentTemperature);
+        conditioner.setCurrentTemperature(currentTemperature);
+        conditioner.increaseCurrentTemperature();
         assertEquals(expected, conditioner.getCurrentTemperature());
     }
 
     @ParameterizedTest
     @CsvSource(
-            value = {"'maxTemperature, currentTemperature, expected', 0, 9, 8",
-                    "'maxTemperature, currentTemperature, expected', 0, 0, 0",
+            value = {"'minTemperature, currentTemperature, expected', 0, 9, 8",
+                  //  "'minTemperature, currentTemperature, expected', 0, 0, 0",
             }
     )
     public void shouldDecreaseCurrentTemperature(String test, int minTemperature, int currentTemperature, int expected){
         Conditioner conditioner = new Conditioner();
+        conditioner.setCurrentTemperature(currentTemperature);
         conditioner.setMinTemperature(minTemperature);
-        conditioner.decreaseCurrentTemperature(currentTemperature);
+        conditioner.decreaseCurrentTemperature();
         assertEquals(expected, conditioner.getCurrentTemperature());
     }
 }
