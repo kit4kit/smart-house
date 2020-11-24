@@ -20,13 +20,14 @@ class ConditionerTest {
 
     @ParameterizedTest
     @CsvSource(
-            value = {"'maxTemperature, currentTemperature, expected', 10, 9, 10",
-                     "'maxTemperature, currentTemperature, expected', 10, 10, 10",
+            value = {"'maxTemperature, currentTemperature, expected', 10, 9, 10, 0",
+                     "'maxTemperature, currentTemperature, expected', 10, 10, 10, 0",
             }
     )
-    public void shouldIncreaseCurrentTemperature(String test, int maxTemperature, int currentTemperature, int expected){
+    public void shouldIncreaseCurrentTemperature(String test, int maxTemperature, int currentTemperature, int expected, int minTemperature){
         Conditioner conditioner = new Conditioner();
         conditioner.setMaxTemperature(maxTemperature);
+        conditioner.setMinTemperature(minTemperature);
         conditioner.setCurrentTemperature(currentTemperature);
         conditioner.increaseCurrentTemperature();
         assertEquals(expected, conditioner.getCurrentTemperature());
@@ -34,14 +35,15 @@ class ConditionerTest {
 
     @ParameterizedTest
     @CsvSource(
-            value = {"'minTemperature, currentTemperature, expected', 0, 9, 8",
-                  //  "'minTemperature, currentTemperature, expected', 0, 0, 0",
+            value = {"'minTemperature, currentTemperature, expected', 0, 9, 8, 10",
+                     "'minTemperature, currentTemperature, expected', 0, 0, 0, 10",
             }
     )
-    public void shouldDecreaseCurrentTemperature(String test, int minTemperature, int currentTemperature, int expected){
+    public void shouldDecreaseCurrentTemperature(String test, int minTemperature, int currentTemperature, int expected, int maxTemperature){
         Conditioner conditioner = new Conditioner();
-        conditioner.setCurrentTemperature(currentTemperature);
+        conditioner.setMaxTemperature(maxTemperature);
         conditioner.setMinTemperature(minTemperature);
+        conditioner.setCurrentTemperature(currentTemperature);
         conditioner.decreaseCurrentTemperature();
         assertEquals(expected, conditioner.getCurrentTemperature());
     }
