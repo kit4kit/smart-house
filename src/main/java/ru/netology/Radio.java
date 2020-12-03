@@ -20,30 +20,32 @@ public class Radio {
         this.minRadio = minRadio;
     }
 
-    public void nextCurrentRadio(){
-        if (currentRadio == 10){
-            this.currentRadio = 0;
+    public void nextCurrentRadio() {
+        if (currentRadio == maxRadio) {
+            this.currentRadio = minRadio;
             return;
         }
         this.currentRadio = currentRadio + 1;
     }
 
-    public void prevCurrentRadio(){
-        if(currentRadio == 0){
-            this.currentRadio = 10;
+    public void prevCurrentRadio() {
+        if (currentRadio == minRadio) {
+            this.currentRadio = maxRadio;
             return;
         }
         this.currentRadio = currentRadio - 1;
     }
-    public void increaseCurrentVolume(){
-        if(currentVolume == 100){
+
+    public void increaseCurrentVolume() {
+        if (currentVolume == maxVolume) {
             this.currentVolume = currentVolume;
             return;
         }
         this.currentVolume = currentVolume + 1;
     }
-    public  void decreaseCurrentVolume(){
-        if(currentVolume == 0){
+
+    public void decreaseCurrentVolume() {
+        if (currentVolume == minVolume) {
             this.currentVolume = currentVolume;
             return;
         }
