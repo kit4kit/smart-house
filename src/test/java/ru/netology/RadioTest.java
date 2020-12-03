@@ -8,11 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
+    @Test
+    public void shouldSetMaxRadio(){
+        Radio radio = new Radio(10, 0);
+        assertEquals(10, radio.getMaxRadio());
+    }
+
+
     @ParameterizedTest
     @CsvSource(
             value = {
                     "'expected, currentRadio', 7, 8",
-                    "'expected, currentRadio', 9, 0"
+                    "'expected, currentRadio', 10, 0"
             }
     )
     void nextCurrentRadio(String test, int currentRadio, int expected) {
@@ -25,7 +32,7 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'expected, currentRadio', 7, 6",
-                    "'expected, currentRadio', 0, 9"
+                    "'expected, currentRadio', 0, 10"
             }
     )
     void shouldPrevCurrentRadio(String test, int currentRadio, int expected) {
@@ -38,7 +45,7 @@ class RadioTest {
     @ParameterizedTest
     @CsvSource(
             value = {
-                    "'expected, currentVolume', 10, 10",
+                    "'expected, currentVolume', 100, 100",
                     "'expected, currentRadio', 8, 9"
             }
     )
