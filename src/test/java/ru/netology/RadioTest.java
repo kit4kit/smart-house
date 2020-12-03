@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    public void shouldSetMaxRadio(){
+    public void shouldSetMaxRadio() {
         Radio radio = new Radio(10, 0);
         assertEquals(10, radio.getMaxRadio());
     }
@@ -24,10 +24,13 @@ class RadioTest {
     )
     void nextCurrentRadio(String test, int currentRadio, int expected) {
         Radio radio = new Radio();
+        radio.setMaxRadio(10);
+        radio.setMinRadio(0);
         radio.setCurrentRadio(currentRadio);
         radio.nextCurrentRadio();
         assertEquals(expected, radio.getCurrentRadio());
     }
+
     @ParameterizedTest
     @CsvSource(
             value = {
@@ -37,6 +40,8 @@ class RadioTest {
     )
     void shouldPrevCurrentRadio(String test, int currentRadio, int expected) {
         Radio radio = new Radio();
+        radio.setMaxRadio(10);
+        radio.setMinRadio(0);
         radio.setCurrentRadio(currentRadio);
         radio.prevCurrentRadio();
         assertEquals(expected, radio.getCurrentRadio());
@@ -49,9 +54,10 @@ class RadioTest {
                     "'expected, currentRadio', 8, 9"
             }
     )
-
     void increaseCurrentVolume(String test, int currentVolume, int expected) {
         Radio radio = new Radio();
+        radio.setMinVolume(0);
+        radio.setMaxVolume(100);
         radio.setCurrentVolume(currentVolume);
         radio.increaseCurrentVolume();
         assertEquals(expected, radio.getCurrentVolume());
@@ -66,6 +72,8 @@ class RadioTest {
     )
     void decreaseCurrentVolume(String test, int currentVolume, int expected) {
         Radio radio = new Radio();
+        radio.setMinVolume(0);
+        radio.setMaxVolume(100);
         radio.setCurrentVolume(currentVolume);
         radio.decreaseCurrentVolume();
         assertEquals(expected, radio.getCurrentVolume());
